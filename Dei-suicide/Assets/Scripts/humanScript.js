@@ -6,6 +6,7 @@ var move : boolean = false;
 var acceptanceRange : float = 1.0f;
 //This is NOT a bug workaround, I swear. Please stop judging me
 var willOfGod : int = 0;
+var distanceVec : Vector3;
 
 function Start () 
 {
@@ -24,7 +25,7 @@ function Update ()
 
 		if (move)
 		{
-			var distanceVec : Vector3 = new Vector3 ( curScript.pos.x - transform.position.x ,  curScript.pos.y - transform.position.y, 0);
+			distanceVec = new Vector3 ( curScript.pos.x - transform.position.x ,  curScript.pos.y - transform.position.y, 0);
 
 			if (distanceVec.magnitude < acceptanceRange && willOfGod == 0)
 			{
@@ -41,6 +42,12 @@ function Update ()
 		{
 			willOfGod --;
 		}
+}
 
-	
+function OnCollisionStay2D(other: Collision2D)
+{
+	if (distanceVec.magnitude < acceptanceRange * 5)
+	{
+		move = false;
+	}
 }

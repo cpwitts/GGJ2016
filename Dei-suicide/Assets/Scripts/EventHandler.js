@@ -4,7 +4,7 @@ var devotion: int;
 var development: int;
 var whatever : GUIStyle;
 var position1 : Rect = new Rect(0, 0, 200, 100);
-var position2 : Rect = new Rect(0, 100, 200, 100);
+var position2 : Rect = new Rect(0, 10, 200, 100);
  
 
 function Start ()

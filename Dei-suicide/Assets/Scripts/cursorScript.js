@@ -1,10 +1,16 @@
 ﻿#pragma strict
 var depth = 10.0;
 var pos : Vector3;
+var camObj : GameObject;
+var cam : Camera;
+var viewPos : Vector3;
+var speed : float = 5.0f;
  
 function Start ()
 {
      Cursor.visible = false;
+     camObj = GameObject.Find("Main Camera");
+     cam = camObj.GetComponent(Camera);
 }
  
 function Update ()
@@ -16,5 +22,25 @@ function Update ()
      if(Input.GetMouseButtonDown(0))
      {
      	pos = wantedPos;
+     }
+
+     viewPos = cam.WorldToViewportPoint(transform.position);
+
+     if (viewPos.x < 0.01)
+     {
+     	camObj.transform.Translate(Vector3.left * speed * Time.deltaTime);
+     }
+      else if (viewPos.x > 0.99)
+     {
+     	camObj.transform.Translate(Vector3.right * speed * Time.deltaTime);
+     }
+
+     if (viewPos.y < 0.01)
+     {
+     	camObj.transform.Translate(Vector3.down * speed * Time.deltaTime);
+     }
+      else if (viewPos.y > 0.99)
+     {
+     	camObj.transform.Translate(Vector3.up * speed * Time.deltaTime);
      }
 }

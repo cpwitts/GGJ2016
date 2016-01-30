@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-UnityScript.unityproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PentagramScript.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RockScript.js">
     <Files>
-      <File FileName="Assets\Scripts\TreeScript.js" Line="35" Column="2" />
-      <File FileName="Assets\Scripts\EventHandler.js" Line="39" Column="25" />
+      <File FileName="Assets\Scripts\TreeScript.js" Line="43" Column="4" />
+      <File FileName="Assets\Scripts\EventHandler.js" Line="18" Column="13" />
       <File FileName="Assets\Scripts\cursorScript.js" Line="7" Column="22" />
-      <File FileName="Assets\Scripts\humanScript.js" Line="49" Column="49" />
-      <File FileName="D:\Game Dev\gameDevGroupAssignment\gameDevGroupAssignment\Assets\scripts\playerScript.js" Line="32" Column="63" />
-      <File FileName="Assets\Scripts\PentagramScript.js" Line="29" Column="2" />
+      <File FileName="Assets\Scripts\humanScript.js" Line="49" Column="41" />
+      <File FileName="Assets\Scripts\PentagramScript.js" Line="74" Column="17" />
+      <File FileName="Assets\Scripts\RockScript.js" Line="103" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -53,12 +53,12 @@ function OnGUI()
 		{
 			if(rng > 20)
 			{
-				print("BARNING");
+				print("Human");
 				human();
 			}
 			else
 			{
-				print("chop chop");
+				print("Goat");
 				goat();
 			}
 		}
@@ -66,12 +66,12 @@ function OnGUI()
 		{
 			if(rng > 20)
 			{
-				print("BARNING");
+				print("Goat");
 				goat();
 			}
 			else
 			{
-				print("chop chop");
+				print("Human");
 				human();
 			}
 		}

@@ -15,7 +15,7 @@ var line : String;
 
 function Start ()
 {
-	devotion = 30;
+	devotion = 0;
 	development = 0;
 	line = "Why can't I die";
 	camObj = GameObject.Find("Main Camera");

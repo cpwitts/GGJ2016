@@ -46,7 +46,7 @@ function Update ()
 
 function OnCollisionStay2D(other: Collision2D)
 {
-	if (distanceVec.magnitude < acceptanceRange * 5)
+	if (other.gameObject.tag != "human" && distanceVec.magnitude < acceptanceRange * 5)
 	{
 		move = false;
 	}

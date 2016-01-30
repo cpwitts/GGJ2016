@@ -17,6 +17,8 @@ var spriteRen : SpriteRenderer;
 var houseSpr : Sprite;
 var wait : boolean;
 var box : BoxCollider2D;
+var burnEffect : AudioSource;
+var buildEffect : AudioSource;
 
 function Start ()
 {
@@ -106,6 +108,7 @@ function burn()
 	//treeClone = Instantiate(rb, Vector3(transform.position.x + Random.Range(-4, 4), transform.position.y + Random.Range(-4, 4), 0), Quaternion.Euler(new Vector3(0,0,0)));
 	interactedWith = true;
 	GUIScript.devotion+=10;
+	burnEffect.Play();
 	//if(spriteRen.sprite == houseSpr)
 	//{
 	//	GUIScript.line = "Fire! My only weakness!";
@@ -119,4 +122,5 @@ function cut()
 	GUIScript.development+=10;
 	clicked = false;
 	interactedWith = true;
+	buildEffect.Play();
 }

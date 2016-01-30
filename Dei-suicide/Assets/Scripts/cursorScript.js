@@ -6,6 +6,7 @@ var cam : Camera;
 var viewPos : Vector3;
 var speed : float = 15.0f;
 var clickPart : ParticleSystem;
+var clickEffect : AudioSource;
  
 function Start ()
 {
@@ -24,6 +25,7 @@ function Update ()
      {
      	pos = wantedPos;
      	clickPart.Play(true);
+     	clickEffect.Play();
      }
 
      viewPos = cam.WorldToViewportPoint(transform.position);

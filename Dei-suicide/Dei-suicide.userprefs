@@ -2,14 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\goatScript2.js">
     <Files>
-      <File FileName="Assets\Scripts\TreeScript.js" Line="29" Column="52" />
-      <File FileName="Assets\Scripts\EventHandler.js" Line="43" Column="4" />
-      <File FileName="Assets\Scripts\cursorScript.js" Line="26" Column="16" />
-      <File FileName="Assets\Scripts\humanScript.js" Line="32" Column="18" />
-      <File FileName="Assets\Scripts\PentagramScript.js" Line="49" Column="3" />
+      <File FileName="Assets\goatScript2.js" Line="49" Column="26" />
+      <File FileName="Assets\Scripts\TreeScript.js" Line="125" Column="7" />
+      <File FileName="Assets\Scripts\EventHandler.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\cursorScript.js" Line="28" Column="10" />
+      <File FileName="Assets\Scripts\humanScript.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PentagramScript.js" Line="51" Column="3" />
       <File FileName="Assets\Scripts\RockScript.js" Line="1" Column="1" />
-      <File FileName="Assets\goatScript2.js" Line="31" Column="52" />
-      <File FileName="D:\Diptera Transcendence\Assets\Scripts\playerScript.js" Line="32" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

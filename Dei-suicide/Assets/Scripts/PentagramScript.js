@@ -16,6 +16,8 @@ var humanRb : Rigidbody2D;
 var sacrifice : Rigidbody2D;
 var sacTime : float = 2f;
 var sacBool : boolean = false;
+var squelchEffect : AudioSource;
+var goatEffect : AudioSource;
 
 function Start ()
 {
@@ -46,6 +48,7 @@ function Update ()
 	{
 		spriteRen.sprite = usedSpr;
 		Destroy(sacrifice.gameObject);
+		squelchEffect.Play();
 		Destroy(this);
 	}
 }
@@ -118,5 +121,6 @@ function goat()
 	clicked = false;
 	sacrifice = Instantiate(goatRb, Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0)));
 	sacBool = true;
+	goatEffect.Play();
 
 }

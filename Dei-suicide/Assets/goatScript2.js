@@ -8,7 +8,6 @@ var camObj : GameObject;
 var cam : Camera;
 var screenPos : Vector3;
 var interactedWith : boolean = false;
-var flames : ParticleSystem;
 var burningTime : float = 3.0f;
 var rng : float;
 var rb : Rigidbody2D;
@@ -18,6 +17,10 @@ var bloodSpr : Sprite;
 var wait : boolean;
 var box : BoxCollider2D;
 var hearts : ParticleSystem;
+var goatEffect : AudioSource;
+var squelchEffect : AudioSource;
+var flames : boolean = false;
+var burningSoul : boolean = false;
 
 
 function Start ()
@@ -43,16 +46,17 @@ function Update()
 		wait = false;
 	}
 
-	if(flames.isPlaying)
+	if(flames && burningTime > 0)
 	{
 		burningTime -= Time.deltaTime;
 	}
 
-	if(burningTime <= 0)
+	if(burningTime <= 0 && !burningSoul)
 	{
+		burningSoul = true;
+		squelchEffect.Play();
 		spriteRen.sprite = bloodSpr;
 		Destroy(box);
-		flames.Stop();
 	}
 }
 
@@ -114,6 +118,7 @@ function OnGUI()
 			}
 			else
 			{
+				pet();
 				burn();
 			}
 		}
@@ -123,10 +128,11 @@ function OnGUI()
 function burn()
 {
 	clicked = false;
-	flames.Play(true);
+	flames = true;
 	//treeClone = Instantiate(rb, Vector3(transform.position.x + Random.Range(-4, 4), transform.position.y + Random.Range(-4, 4), 0), Quaternion.Euler(new Vector3(0,0,0)));
 	interactedWith = true;
 	GUIScript.devotion+=10;
+	goatEffect.Play();
 	//if(spriteRen.sprite == houseSpr)
 	//{
 	//	GUIScript.line = "Fire! My only weakness!";
@@ -136,4 +142,5 @@ function burn()
 function pet()
 {
 	hearts.Play(true);
+	goatEffect.Play();
 }

@@ -15,6 +15,7 @@ var rb : Rigidbody2D;
 var treeClone : Rigidbody2D;
 var spriteRen : SpriteRenderer;
 var houseSpr : Sprite;
+var wait : boolean;
 
 function Start ()
 {
@@ -28,19 +29,38 @@ function Start ()
 
 function FixedUpdate ()
 {
-	if(Input.GetMouseButtonUp(0))
+	//if(Input.GetMouseButtonUp(0) && !wait)
+	//{
+	//	clicked = false;
+//	}
+
+	//if(wait)
+//	{
+//		wait = false;
+//	}
+}
+
+function Update()
+{
+	if(Input.GetMouseButtonUp(0) && !wait)
 	{
 		clicked = false;
+	}
+
+	else
+	{
+		wait = false;
 	}
 }
 
 function OnCollisionStay2D(other: Collision2D)
 {
-	if(other.gameObject.name == "Cursor" && !interactedWith && !clicked)
+	if(other.gameObject.name == "Cursor")
 	{
 		if(Input.GetMouseButtonUp(0))
 		{
 			clicked = true;
+			wait = true;
 		}
 	}
 
@@ -60,12 +80,13 @@ function OnGUI()
 	
 	if(clicked)
 	{
-		rng = Random.Range(1,100);
 		//Gets the trees position in pixels
 		screenPos = cam.WorldToScreenPoint(transform.position);
 		//Creates clickable button beside. I just entered numbers until it worked.
 		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y + 260,50,30),"Burn"))
 		{
+			print("You chose burn");
+			rng = Random.Range(1,100);
 			if(rng > 20)
 			{
 				print("BARNING");
@@ -79,14 +100,16 @@ function OnGUI()
 		}
 		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y +300,50,30),"Cut"))
 		{
+			print("You chose burn");
+			rng = Random.Range(1,100);
 			if(rng > 20)
 			{
-				print("BARNING");
+				print("chop chop");
 				cut();
 			}
 			else
 			{
-				print("chop chop");
+				print("BARNING");
 				burn();
 			}
 		}
@@ -99,13 +122,12 @@ function burn()
 	clicked = false;
 	flames.Play(true);
 	//treeClone = Instantiate(rb, Vector3(transform.position.x + Random.Range(-4, 4), transform.position.y + Random.Range(-4, 4), 0), Quaternion.Euler(new Vector3(0,0,0)));
-	interactedWith = true;
+	//interactedWith = true;
 	GUIScript.devotion+=10;
 	if(spriteRen.sprite == houseSpr)
 	{
 		GUIScript.line = "Fire! My only weakness!";
 	}
-	return 1;
 }
 
 function cut()

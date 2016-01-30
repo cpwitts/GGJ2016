@@ -4,7 +4,7 @@ var pos : Vector3;
 var camObj : GameObject;
 var cam : Camera;
 var viewPos : Vector3;
-var speed : float = 5.0f;
+var speed : float = 15.0f;
  
 function Start ()
 {
@@ -26,20 +26,20 @@ function Update ()
 
      viewPos = cam.WorldToViewportPoint(transform.position);
 
-     if (viewPos.x < 0.01)
+     if (viewPos.x < 0.01 && camObj.transform.position.x > -20)
      {
      	camObj.transform.Translate(Vector3.left * speed * Time.deltaTime);
      }
-      else if (viewPos.x > 0.99)
+      else if (viewPos.x > 0.99 && camObj.transform.position.x < 20)
      {
      	camObj.transform.Translate(Vector3.right * speed * Time.deltaTime);
      }
 
-     if (viewPos.y < 0.01)
+     if (viewPos.y < 0.01 && camObj.transform.position.y > -10)
      {
      	camObj.transform.Translate(Vector3.down * speed * Time.deltaTime);
      }
-      else if (viewPos.y > 0.99)
+      else if (viewPos.y > 0.99 && camObj.transform.position.y < 10)
      {
      	camObj.transform.Translate(Vector3.up * speed * Time.deltaTime);
      }

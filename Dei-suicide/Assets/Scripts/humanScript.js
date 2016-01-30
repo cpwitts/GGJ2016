@@ -30,7 +30,6 @@ function Update ()
 			if (distanceVec.magnitude < acceptanceRange && willOfGod == 0)
 			{
 				move = false;
-				print(distanceVec);
 			}
 
 			Vector3.Normalize(distanceVec);

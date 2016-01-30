@@ -10,6 +10,12 @@ var camObj : GameObject;
 var cam : Camera;
 var spriteRen : SpriteRenderer;
 var usedSpr : Sprite;
+var wait : boolean = false;
+var goatRb : Rigidbody2D;
+var humanRb : Rigidbody2D;
+var sacrifice : Rigidbody2D;
+var sacTime : float = 2f;
+var sacBool : boolean = false;
 
 function Start ()
 {
@@ -20,11 +26,27 @@ function Start ()
 	spriteRen = this.gameObject.GetComponent(SpriteRenderer);
 }
 
-function FixedUpdate ()
+function Update ()
 {
-	if(Input.GetMouseButtonUp(0))
+	if(Input.GetMouseButtonUp(0) && !wait)
 	{
 		clicked = false;
+	}
+	else
+	{
+		wait = true;
+	}
+
+	if(sacBool && sacTime > 0)
+	{
+		sacTime -= Time.deltaTime;
+	}
+
+	if(sacTime <= 0)
+	{
+		spriteRen.sprite = usedSpr;
+		Destroy(sacrifice.gameObject);
+		Destroy(this);
 	}
 }
 
@@ -36,6 +58,7 @@ function OnCollisionStay2D(other: Collision2D)
 		{
 			print("hover");
 			clicked = true;
+			wait = true;
 			rng = Random.Range(1,100);
 		}
 	}
@@ -83,7 +106,9 @@ function human()
 	GUIScript.devotion += 20;
 	interactedWith = true;
 	clicked = false;
-	spriteRen.sprite = usedSpr;
+	sacrifice = Instantiate(humanRb, Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0)));
+	sacBool = true;
+	//interactedWith = true;
 }
 
 function goat()
@@ -91,5 +116,7 @@ function goat()
 	GUIScript.development += 10;
 	interactedWith = true;
 	clicked = false;
-	spriteRen.sprite = usedSpr;
+	sacrifice = Instantiate(goatRb, Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0)));
+	sacBool = true;
+
 }

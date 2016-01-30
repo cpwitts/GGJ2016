@@ -13,6 +13,11 @@ var cam : Camera;
 var camObj : GameObject;
 var line : String;
 
+var tree : Rigidbody2D;
+var star : Rigidbody2D;
+var treeClone : Rigidbody2D;
+var starClone : Rigidbody2D;
+//var posi: Vector3;
 function Start ()
 {
 	devotion = 0;
@@ -24,12 +29,22 @@ function Start ()
 	S_width = S_height*cam.main.aspect;//width of screen
 	position3 = new Rect(0, Screen.height - 30, Screen.width, 30);
 
-	//labelForDevotion = new GUI.Label(position2, "Development: " + development);
+	/*for(var i : int = 0; i < 5; i++)
+	{
+		//posi = 0,0,0;
+		treeClone = Instantiate(tree, Vector3(transform.position.x + Random.Range(-20, 20),
+		transform.position.y + Random.Range(-10, 10), 0), Quaternion.Euler(new Vector3(0,0,0)));
+	}
+	for(i = 0; i < 2; i++)
+	{
+		//posi = 0,0,0;
+		starClone = Instantiate(star, Vector3(transform.position.x + Random.Range(-20, 20),
+		transform.position.y + Random.Range(-10, 10), 0), Quaternion.Euler(new Vector3(0,0,0)));
+	}*/
 }
 
 function Update ()
 {
-
 }
 
 function OnGUI()

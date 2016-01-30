@@ -5,6 +5,7 @@ var camObj : GameObject;
 var cam : Camera;
 var viewPos : Vector3;
 var speed : float = 15.0f;
+var clickPart : ParticleSystem;
  
 function Start ()
 {
@@ -22,6 +23,7 @@ function Update ()
      if(Input.GetMouseButtonDown(0))
      {
      	pos = wantedPos;
+     	clickPart.Play(true);
      }
 
      viewPos = cam.WorldToViewportPoint(transform.position);

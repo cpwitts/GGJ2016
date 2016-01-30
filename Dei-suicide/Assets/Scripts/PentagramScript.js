@@ -72,9 +72,9 @@ function OnGUI()
 		//Gets the trees position in pixels
 		screenPos = cam.WorldToScreenPoint(transform.position);
 		//Creates clickable button beside. I just entered numbers until it worked.
-		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y + 260,50,30),"Human"))
+		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y + 260,55,30),"Human"))
 		{
-			if(rng > 20)
+			if(rng > 40)
 			{
 				print("Human");
 				human();
@@ -85,9 +85,9 @@ function OnGUI()
 				goat();
 			}
 		}
-		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y +300,50,30),"Goat"))
+		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y +300,55,30),"Goat"))
 		{
-			if(rng > 20)
+			if(rng > 40)
 			{
 				print("Goat");
 				goat();

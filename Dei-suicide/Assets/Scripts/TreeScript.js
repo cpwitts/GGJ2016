@@ -16,6 +16,7 @@ var treeClone : Rigidbody2D;
 var spriteRen : SpriteRenderer;
 var houseSpr : Sprite;
 var wait : boolean;
+var box : BoxCollider2D;
 
 function Start ()
 {
@@ -25,19 +26,7 @@ function Start ()
 	cam = camObj.GetComponent(Camera);
 	rb = this.gameObject.GetComponent(Rigidbody2D);
 	spriteRen = this.gameObject.GetComponent(SpriteRenderer);
-}
-
-function FixedUpdate ()
-{
-	//if(Input.GetMouseButtonUp(0) && !wait)
-	//{
-	//	clicked = false;
-//	}
-
-	//if(wait)
-//	{
-//		wait = false;
-//	}
+	box = this.gameObject.GetComponent(BoxCollider2D);
 }
 
 function Update()
@@ -51,18 +40,6 @@ function Update()
 	{
 		wait = false;
 	}
-}
-
-function OnCollisionStay2D(other: Collision2D)
-{
-	if(other.gameObject.name == "Cursor")
-	{
-		if(Input.GetMouseButtonUp(0))
-		{
-			clicked = true;
-			wait = true;
-		}
-	}
 
 	if(flames.isPlaying)
 	{
@@ -75,41 +52,47 @@ function OnCollisionStay2D(other: Collision2D)
 	}
 }
 
+function OnCollisionStay2D(other: Collision2D)
+{
+	if(other.gameObject.name == "Cursor")
+	{
+		if(Input.GetMouseButtonUp(0))
+		{
+			clicked = true;
+			wait = true;
+		}
+	}
+}
+
 function OnGUI()
 {
 	
-	if(clicked)
+	if(clicked && !interactedWith)
 	{
 		//Gets the trees position in pixels
 		screenPos = cam.WorldToScreenPoint(transform.position);
 		//Creates clickable button beside. I just entered numbers until it worked.
 		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y + 260,50,30),"Burn"))
 		{
-			print("You chose burn");
 			rng = Random.Range(1,100);
-			if(rng > 20)
+			if(rng > 40)
 			{
-				print("BARNING");
 				burn();
 			}
 			else
 			{
-				print("chop chop");
 				cut();
 			}
 		}
-		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y +300,50,30),"Cut"))
+		if (GUI.Button(Rect(screenPos.x + 20, -screenPos.y +300,50,30),"Build"))
 		{
-			print("You chose burn");
 			rng = Random.Range(1,100);
-			if(rng > 20)
+			if(rng > 40)
 			{
-				print("chop chop");
 				cut();
 			}
 			else
 			{
-				print("BARNING");
 				burn();
 			}
 		}
@@ -118,22 +101,22 @@ function OnGUI()
 
 function burn()
 {
-	print("You did the Jesus");
 	clicked = false;
 	flames.Play(true);
 	//treeClone = Instantiate(rb, Vector3(transform.position.x + Random.Range(-4, 4), transform.position.y + Random.Range(-4, 4), 0), Quaternion.Euler(new Vector3(0,0,0)));
-	//interactedWith = true;
+	interactedWith = true;
 	GUIScript.devotion+=10;
-	if(spriteRen.sprite == houseSpr)
-	{
-		GUIScript.line = "Fire! My only weakness!";
-	}
+	//if(spriteRen.sprite == houseSpr)
+	//{
+	//	GUIScript.line = "Fire! My only weakness!";
+	//}
 }
 
 function cut()
 {
 	spriteRen.sprite = houseSpr;
+	box.size = new Vector2(0.8, 0.55);
 	GUIScript.development+=10;
-	//clicked = false;
-	//interactedWith = true;
+	clicked = false;
+	interactedWith = true;
 }
